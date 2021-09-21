@@ -38,6 +38,9 @@ virty = []
 def cpu_usage(i):
     percent = cpu_percent()
     cpuy.append(percent)
+    if percent >=80:
+        create_and_send_email("adminemail@gmail.com","SYSTEM ALERT",
+        "WARNING ⚠️: CPU Usage exceeded 80%")
     plt.plot(cpuy, 'r', label='hello')
     ax = plt.gca()
     ax.set_xticklabels([])
@@ -48,6 +51,9 @@ red = FuncAnimation( plt.gcf(), cpu_usage, interval = 100)
 def cpu_temperature(i):
     percent = sensors_temperatures()['coretemp'][1][1]
     tempy.append(percent)
+    if percent >=80:
+        create_and_send_email("adminemail@gmail.com","SYSTEM ALERT",
+        "WARNING ⚠️: CPU Temperature exceeded 80 degrees Celsius")
     plt.plot(tempy, 'b', label='hello')
     ax = plt.gca()
     ax.set_xticklabels([])
@@ -58,6 +64,9 @@ blue = FuncAnimation( plt.gcf(), cpu_temperature, interval = 100)
 def ram_usage(i):
     percent = list(virtual_memory())[2]
     virty.append(percent)
+    if percent >=80:
+        create_and_send_email("adminemail@gmail.com","SYSTEM ALERT",
+        "WARNING ⚠️: RAM usage exceeded 80%")
     plt.plot(virty, 'y', label='hello')
     ax = plt.gca()
     ax.set_xticklabels([])
@@ -65,5 +74,5 @@ def ram_usage(i):
 
 yellow = FuncAnimation( plt.gcf(), ram_usage, interval = 100)
 
-plt.title("BLUE -> CPU Temperature \n RED -> CPU Usage \n YELLOW ->  RAM Usage")
+plt.title("BLUE -> CPU Temperature in degrees Celsius \n RED -> CPU Usage \n YELLOW ->  RAM Usage")
 plt.show()
