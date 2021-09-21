@@ -10,7 +10,7 @@ This tool can show the system usage in graph format.
 
 ![](demo.gif)
 
-In case the threshold values exceeds, the admin will recieve a system alert through email.
+In case the threshold values exceeds, the admin will receive a system alert through email.
 By default all the threshold values are above 80.
 
 *The sender email & password, receipent email and threshold values can be configured*
